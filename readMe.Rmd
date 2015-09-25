@@ -42,7 +42,7 @@ I train a random forest model and use pca in preprocess to speed up the process 
 modelFit <- train(training$classe~.,data=training,  method = "rf", preProcess="pca",trControl = trainControl(method = "cv"))
 ```
 I tested it with my remaining data:
-This test show an out of sample accuracy > 95% which is enough for me.
+This test an accuracy of 97% on the validation set. So, I can hope for an out of sample accuracy > 95% which is enough for me.
 ```{}
 pred = predict(modelFit,newdata=testing)
 cm = confusionMatrix(pred, testing$classe)

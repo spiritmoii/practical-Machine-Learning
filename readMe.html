@@ -89,7 +89,7 @@ training[is.na(training) ]  &lt;- 0
 testing[is.na(testing) ]  &lt;- 0</code></pre>
 <p>I train a random forest model and use pca in preprocess to speed up the process and hopefully reduce the incidence of the 0, I put on the data.</p>
 <pre><code>modelFit &lt;- train(training$classe~.,data=training,  method = &quot;rf&quot;, preProcess=&quot;pca&quot;,trControl = trainControl(method = &quot;cv&quot;))</code></pre>
-<p>I tested it with my remaining data: This test show an out of sample accuracy &gt; 95% which is enough for me.</p>
+<p>I tested it with my remaining data: This test an accuracy of 97% on the validation set. So, I can hope for an out of sample accuracy &gt; 95% which is enough for me.</p>
 <pre><code>pred = predict(modelFit,newdata=testing)
 cm = confusionMatrix(pred, testing$classe)
 cm
